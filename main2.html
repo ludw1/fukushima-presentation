@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Difference between Chernobyl and Fukushima</title>
+    
+    <!-- External Scripts and Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&family=Roboto+Flex:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nuke: '#22c55e',       /* Green-500 */
+                        chernobyl: '#ef4444',  /* Red-500 */
+                        fukushima: '#06b6d4',  /* Cyan-500 */
+                        darkbg: '#0a0a0a',
+                    },
+                    fontFamily: {
+                        mono: ['"Source Code Pro"', 'monospace'],
+                        sans:['"Roboto Flex"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: "Roboto Flex", sans-serif;
+            background: #000;
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        #presentation-wrapper {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            transform-origin: center center;
+            background: #0a0a0a;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Slide Transition Logic */
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.97) translateY(10px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1) translateY(0);
+        }
+
+        /* Reusable UI Components */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+        }
+        
+        .diagram-container {
+            background: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .source-tag {
+            color: #22c55e;
+            font-family: "Source Code Pro", monospace;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .source-tag:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="presentation-wrapper">
+        
+        <!-- Slide 1: Title -->
+        <div class="slide active justify-center items-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-800 via-black to-black">
+            <!-- Subtle Grid Background -->
+            <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+            
+            <div class="relative z-10 text-center flex flex-col items-center">
+                <div class="w-24 h-24 rounded-full bg-gray-900 border border-gray-700 flex items-center justify-center mb-8 shadow-2xl">
+                    <i class="material-icons text-5xl text-gray-400">science</i>
+                </div>
+                <h1 class="font-mono text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+                    Difference between<br/>
+                    <span class="text-chernobyl drop-shadow-[0_0_20px_rgba(239,68,68,0.4)]">Chernobyl</span> & 
+                    <span class="text-fukushima drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">Fukushima</span>
+                </h1>
+                <div class="w-32 h-1 bg-gray-700 rounded-full mx-auto mb-8"></div>
+                <p class="text-xl text-gray-400 font-light tracking-widest uppercase letter-spacing-2">A very short introduction</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Fission -->
+        <!-- Reduced paddings: px-8 pt-6 pb-12 -->
+        <div class="slide px-8 pt-6 pb-12 bg-darkbg">
+            <div class="border-b border-white/10 pb-3 mb-6">
+                <h2 class="text-3xl font-mono font-bold text-white">1. Nuclear Fission Basics</h2>
+            </div>
+            <div class="flex-grow flex gap-8">
+                <div class="w-5/12 flex flex-col gap-4 justify-center">
+                    <div class="glass-card p-4 flex gap-4 items-start">
+                        <div class="w-10 h-10 rounded-lg bg-nuke/10 text-nuke flex items-center justify-center shrink-0">
+                            <i class="material-icons text-2xl">hub</i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-mono font-bold text-nuke mb-1">Chain Reaction</h3>
+                            <p class="text-gray-300 leading-snug text-sm">Neutrons split fissile nuclei, releasing energy and more neutrons, propagating a self-sustaining reaction.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-4 flex gap-4 items-start">
+                        <div class="w-10 h-10 rounded-lg bg-nuke/10 text-nuke flex items-center justify-center shrink-0">
+                            <i class="material-icons text-2xl">local_fire_department</i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-mono font-bold text-nuke mb-1">Decay Heat</h3>
+                            <p class="text-gray-300 leading-snug text-sm">Even after fission stops (reactor shutdown), radioactive byproducts continue to generate intense heat that requires active cooling.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-4 flex gap-4 items-start">
+                        <div class="w-10 h-10 rounded-lg bg-nuke/10 text-nuke flex items-center justify-center shrink-0">
+                            <i class="material-icons text-2xl">electric_bolt</i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-mono font-bold text-nuke mb-1">Power Generation</h3>
+                            <p class="text-gray-300 leading-snug text-sm">The heat boils water into steam, which spins a turbine connected to a generator to produce electricity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-7/12 flex flex-col items-center justify-center">
+                    <!-- Constrained max-height to prevent overlap -->
+                    <div class="diagram-container w-full max-h-[460px] flex flex-col items-center justify-center relative">
+                        <a href="https://en.wikipedia.org/wiki/Special:FilePath/Nuclear_fission_chain_reaction.svg" target="_blank" class="source-tag absolute top-2 right-3 text-lg">[1]</a>
+                        <img src="https://en.wikipedia.org/wiki/Special:FilePath/Nuclear_fission_chain_reaction.svg" alt="Fission Diagram" class="w-full h-full object-contain p-2"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Reactor Structure -->
+        <div class="slide px-8 pt-6 pb-12 bg-darkbg">
+            <div class="border-b border-white/10 pb-3 mb-6">
+                <h2 class="text-3xl font-mono font-bold text-white">2. Core Components</h2>
+            </div>
+            <div class="flex-grow flex gap-8">
+                <div class="w-5/12 flex flex-col gap-5 justify-center">
+                    <div class="glass-card p-5">
+                        <h3 class="text-lg font-mono font-bold text-white flex items-center gap-3 mb-2">
+                            <i class="material-icons text-nuke">speed</i> Moderators
+                        </h3>
+                        <p class="text-gray-400 text-sm mb-3 leading-snug">Slow down fast neutrons to increase the probability of fission occurring.</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="px-2 py-1 rounded bg-white/10 text-xs text-gray-300">Light Water (H₂O)</span>
+                            <span class="px-2 py-1 rounded bg-white/10 text-xs text-gray-300">Heavy Water</span>
+                            <span class="px-2 py-1 rounded bg-white/10 text-xs text-gray-300">Graphite</span>
+                        </div>
+                    </div>
+                    <div class="glass-card p-5">
+                        <h3 class="text-lg font-mono font-bold text-white flex items-center gap-3 mb-2">
+                            <i class="material-icons text-nuke">block</i> Absorbers
+                        </h3>
+                        <p class="text-gray-400 text-sm mb-3 leading-snug">Materials that capture neutrons to control or stop the reaction rate (Control Rods).</p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="px-2 py-1 rounded bg-white/10 text-xs text-gray-300">Boron</span>
+                            <span class="px-2 py-1 rounded bg-white/10 text-xs text-gray-300">Cadmium</span>
+                            <span class="px-2 py-1 rounded bg-white/10 text-xs text-gray-300">Silver-Indium</span>
+                        </div>
+                    </div>
+                    <div class="glass-card p-5">
+                        <h3 class="text-lg font-mono font-bold text-white flex items-center gap-3 mb-2">
+                            <i class="material-icons text-nuke">battery_charging_full</i> Fuel Rods
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-snug">Contain enriched Uranium.</p>
+                    </div>
+                </div>
+                <div class="w-7/12 flex flex-col items-center justify-center">
+                    <div class="diagram-container w-full max-h-[460px] flex flex-col items-center justify-center relative">
+                        <a href="https://en.wikipedia.org/wiki/Special:FilePath/Thermal_reactor_diagram.svg" target="_blank" class="source-tag absolute top-2 right-3 text-lg">[2]</a>
+                        <img src="https://en.wikipedia.org/wiki/Special:FilePath/Thermal_reactor_diagram.svg" alt="Reactor Components" class="w-full h-full object-contain p-2"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Chernobyl Design -->
+        <div class="slide px-8 pt-6 pb-12 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-red-950/20 via-darkbg to-darkbg">
+            <div class="border-b border-red-500/20 pb-3 mb-6 flex items-end gap-3">
+                <h2 class="text-3xl font-mono font-bold text-white">3. Chernobyl Design</h2>
+                <span class="text-chernobyl text-xl">RBMK-1000</span>
+                <a href="https://world-nuclear.org/information-library/appendices/rbmk-reactors" target="_blank" class="source-tag text-sm ml-2 relative -top-1">[4]</a>
+            </div>
+            <div class="flex-grow flex gap-8">
+                <div class="w-1/2 flex flex-col justify-center gap-4">
+                    <div class="glass-card p-4 border-l-4 border-l-red-500">
+                        <h3 class="text-lg font-mono font-bold text-chernobyl mb-1">Graphite Moderated</h3>
+                        <p class="text-gray-300 text-sm leading-snug">Uses solid graphite blocks to moderate neutrons. This allowed using cheaper, un-enriched uranium.</p>
+                    </div>
+                    <!-- Added Coolant Point -->
+                    <div class="glass-card p-4 border-l-4 border-l-red-500">
+                        <h3 class="text-lg font-mono font-bold text-chernobyl mb-1">Coolant</h3>
+                        <p class="text-gray-300 text-sm leading-snug">Light water (H₂O). Steam from the heated water is directly used to power the turbines.</p>
+                    </div>
+                    <div class="glass-card p-4 border-l-4 border-l-red-500">
+                        <h3 class="text-lg font-mono font-bold text-chernobyl mb-1">Lack of Containment</h3>
+                        <p class="text-gray-300 text-sm leading-snug">Housed in a standard industrial building rather than a massive reinforced concrete containment dome.</p>
+                    </div>
+                    
+                    <div class="bg-red-500/10 border border-red-500/40 rounded-xl p-4 mt-1 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-2 opacity-10">
+                            <i class="material-icons text-7xl text-red-500">warning</i>
+                        </div>
+                        <h3 class="text-xl font-mono font-bold text-white mb-1 flex items-center gap-2">
+                            <i class="material-icons text-chernobyl text-xl">gpp_bad</i> Fatal Flaw
+                        </h3>
+                        <p class="text-red-300 font-semibold mb-1 text-sm">Positive Void Coefficient</p>
+                        <p class="text-gray-300 text-xs leading-relaxed pr-6">
+                            If the cooling water boils into steam (a 'void'), it absorbs fewer neutrons but the graphite keeps moderating them. <strong>Less water = More neutrons = Power spikes = More boiling.</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="w-1/2 flex items-center justify-center">
+                    <div class="diagram-container w-full max-h-[460px] flex flex-col items-center justify-center relative">
+                        <a href="https://en.wikipedia.org/wiki/Special:FilePath/RBMK_reactor_schematic.svg" target="_blank" class="source-tag absolute top-2 right-3 text-lg">[3]</a>
+                        <img src="https://en.wikipedia.org/wiki/Special:FilePath/RBMK_reactor_schematic.svg" alt="RBMK Reactor" class="w-full h-full object-contain p-2"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Chernobyl Accident -->
+        <div class="slide px-8 pt-6 pb-12 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-red-950/30 via-darkbg to-darkbg">
+            <div class="border-b border-red-500/20 pb-3 mb-6 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <h2 class="text-3xl font-mono font-bold text-white">4. Chernobyl Accident</h2>
+                    <span class="text-gray-400 text-xl font-light">26.04.1986</span>
+                    <a href="https://world-nuclear.org/information-library/appendices/chernobyl-accident-appendix-1-sequence-of-events" target="_blank" class="source-tag text-sm">[5]</a>
+                </div>
+                <div class="bg-red-500/20 border border-red-500/50 px-3 py-1.5 rounded text-red-200 font-mono text-s flex items-center gap-2">
+                    Release: ~5,300 PBq <a href="https://www.sciencedirect.com/science/article/abs/pii/S004896971301173X?via%3Dihub" target="_blank" class="source-tag hover:text-white">[7]</a>
+                </div>
+            </div>
+            <div class="flex-grow flex gap-8">
+                <div class="w-[55%] flex flex-col justify-center">
+                    <div class="space-y-4 relative border-l-2 border-red-500/30 ml-4 pl-6 py-1">
+                        <div class="relative">
+                            <div class="absolute -left-[33px] top-1 w-3.5 h-3.5 rounded-full bg-red-500 ring-4 ring-darkbg"></div>
+                            <h4 class="text-white font-bold text-base mb-0.5">Pre-Test Setup</h4>
+                            <p class="text-gray-300 text-[13px] leading-snug">To maintain power after an unintended drop, operators removed almost all control rods, leaving the reactor highly unstable.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[33px] top-1 w-3.5 h-3.5 rounded-full bg-red-500 ring-4 ring-darkbg"></div>
+                            <h4 class="text-white font-bold text-base mb-0.5">01:23:04 - Reduction of Flow</h4>
+                            <p class="text-gray-300 text-[13px] leading-snug">The test begins. Reduction of water flow leads to water boiling off faster, increasing reactivity due to the positive void coefficient.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[33px] top-1 w-3.5 h-3.5 rounded-full bg-red-500 ring-4 ring-darkbg"></div>
+                            <h4 class="text-white font-bold text-base mb-0.5">01:23:40 - SCRAM & Power Surge</h4>
+                            <p class="text-gray-300 text-[13px] leading-snug">Emergency shutdown (AZ-5) initiated, but control rods jam. The rods' graphite tips displace water, causing a massive power surge instead of stopping it.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[33px] top-1 w-3.5 h-3.5 rounded-full bg-red-500 ring-4 ring-darkbg shadow-[0_0_10px_#ef4444]"></div>
+                            <h4 class="text-chernobyl font-bold text-base mb-0.5">~01:24:00 - Explosions</h4>
+                            <p class="text-gray-300 text-[13px] leading-snug">Uncontrolled reaction causes a steam and hydrogen explosion inside the core, blowing the 1000-ton lid off.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[33px] top-1 w-3.5 h-3.5 rounded-full bg-red-500 ring-4 ring-darkbg"></div>
+                            <h4 class="text-white font-bold text-base mb-0.5">Aftermath</h4>
+                            <p class="text-gray-300 text-[13px] leading-snug">The exposed graphite catches fire, burning for 10 days and continuously spreading radioactive material over a huge area.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[45%] flex items-center justify-center">
+                    <div class="w-full max-h-[500px] rounded-xl overflow-hidden border border-white/10 relative group">
+                        <a href="https://en.wikipedia.org/wiki/Special:FilePath/IAEA_02790015_(5613115146).jpg" target="_blank" class="source-tag absolute top-2 right-3 text-lg z-20 shadow-md bg-black/50 px-1 rounded">[6]</a>
+                        <img src="https://en.wikipedia.org/wiki/Special:FilePath/IAEA_02790015_(5613115146).jpg" alt="Chernobyl Reactor 4 Destroyed" class="w-full h-full object-cover"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
+                            <p class="text-white text-xs font-mono">Destroyed Reactor 4 Building</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Fukushima Design -->
+        <div class="slide px-8 pt-6 pb-12 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cyan-950/20 via-darkbg to-darkbg">
+            <div class="border-b border-cyan-500/20 pb-3 mb-6 flex items-end gap-3">
+                <h2 class="text-3xl font-mono font-bold text-white">5. Fukushima Design</h2>
+                <span class="text-fukushima text-xl">BWR</span>
+            </div>
+            <div class="flex-grow flex gap-8">
+                <div class="w-1/2 flex flex-col justify-center gap-5">
+                    
+                    <div class="glass-card p-4 border-r-4 border-r-cyan-500">
+                        <h3 class="text-[15px] font-mono font-bold text-white mb-1 flex items-center gap-2">
+                            <span class="bg-cyan-500 text-darkbg px-1.5 rounded">2</span> Fuel Core Element
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-snug">Light water acts as BOTH coolant and moderator. If water boils away, moderation stops, naturally halting the chain reaction.</p>
+                    </div>
+
+                    <div class="glass-card p-4 border-r-4 border-r-cyan-500">
+                        <h3 class="text-[15px] font-mono font-bold text-white mb-1 flex items-center gap-2">
+                            <span class="bg-cyan-500 text-darkbg px-1.5 rounded">3</span> Control Rod Element
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-snug">Inserted from the bottom to absorb neutrons and control the reaction rate.</p>
+                    </div>
+
+                    <div class="glass-card p-4 border-r-4 border-r-cyan-500">
+                        <h3 class="text-[15px] font-mono font-bold text-white mb-1 flex items-center gap-2">
+                            <span class="bg-cyan-500 text-darkbg px-1.5 rounded">1</span> & <span class="bg-cyan-500 text-darkbg px-1.5 rounded">17</span> Containment
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-snug">The core is inside a thick steel reactor vessel (1), sitting within a massive concrete chamber (17).</p>
+                    </div>
+                    
+                    <div class="bg-cyan-500/10 border border-cyan-500/40 rounded-xl p-4 mt-1 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-2 opacity-10">
+                            <i class="material-icons text-6xl text-cyan-500">waves</i>
+                        </div>
+                        <h3 class="text-lg font-mono font-bold text-white mb-1 flex items-center gap-2">
+                            <i class="material-icons text-fukushima text-lg">warning</i> Fatal Flaw
+                        </h3>
+                        <p class="text-cyan-300 font-semibold mb-1 text-sm">Infrastructure Placement</p>
+                        <p class="text-gray-300 text-[13px] leading-relaxed pr-6">
+                            Emergency diesel generators required to pump cooling water were placed in low-lying basements vulnerable to flooding.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-1/2 flex items-center justify-center">
+                    <div class="diagram-container w-full max-h-[480px] flex flex-col items-center justify-center relative bg-white">
+                        <a href="https://upload.wikimedia.org/wikipedia/commons/6/6a/Schema_reacteur_eau_bouillante.svg" target="_blank" class="source-tag absolute top-2 right-3 text-lg z-20">[8]</a>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Schema_reacteur_eau_bouillante.svg" alt="BWR Reactor" class="w-full h-full object-contain p-1"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Fukushima Accident -->
+        <div class="slide px-8 pt-6 pb-12 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cyan-950/30 via-darkbg to-darkbg">
+            <div class="border-b border-cyan-500/20 pb-3 mb-6 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <h2 class="text-3xl font-mono font-bold text-white">6. Fukushima Accident</h2>
+                    <span class="text-gray-400 text-xl font-light">11.03.2011</span>
+                </div>
+                <div class="bg-cyan-500/20 border border-cyan-500/50 px-3 py-1.5 rounded text-cyan-200 font-mono text-s flex items-center gap-2">
+                    Release: ~520 PBq <a href="https://www.sciencedirect.com/science/article/abs/pii/S004896971301173X?via%3Dihub" target="_blank" class="source-tag hover:text-white">[7]</a>
+                </div>
+            </div>
+            <div class="flex-grow flex gap-1">
+                <div class="w-[55%] flex flex-col justify-top pt-16">
+                    <div class="space-y-5 relative border-l-2 border-cyan-500/30 ml-4 pl-6 py-1">
+                        <div class="relative">
+                            <div class="absolute -left-[33px] top-1 w-3.5 h-3.5 rounded-full bg-cyan-500 ring-4 ring-darkbg"></div>
+                            <h4 class="text-white font-bold text-[20px] mb-0.5">14:46 - The Earthquake</h4>
+                            <p class="text-gray-300 text-[18px] leading-snug">A 9.0 magnitude earthquake strikes. Reactors shut down automatically (SCRAM). Fission stops, but decay heat remains high.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[33px] top-1 w-3.5 h-3.5 rounded-full bg-cyan-500 ring-4 ring-darkbg shadow-[0_0_10px_#06b6d4]"></div>
+                            <h4 class="text-white font-bold text-[20px] mb-0.5">15:35 - The Tsunami</h4>
+                            <p class="text-gray-300 text-[18px] leading-snug">A massive tsunami floods the backup diesel generators. Complete Station Blackout occurs; cooling water stops flowing.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[33px] top-1 w-3.5 h-3.5 rounded-full bg-cyan-500 ring-4 ring-darkbg"></div>
+                            <h4 class="text-white font-bold text-[20px] mb-0.5">Next 3 Days - Meltdown</h4>
+                            <p class="text-gray-300 text-[18px] leading-snug">Water boils off. Exposed fuel rods melt. The extreme heat causes the zirconium cladding to react with steam, creating Hydrogen gas.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[33px] top-1 w-3.5 h-3.5 rounded-full bg-cyan-500 ring-4 ring-darkbg"></div>
+                            <h4 class="text-white font-bold text-[20px] mb-0.5">Building Explosions</h4>
+                            <p class="text-gray-300 text-[18px] leading-snug">Hydrogen gas is vented into the upper buildings, where it explodes, destroying the roofs. Primary containments remain mostly intact.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[45%] flex items-center justify-center">
+                    <!-- Restored TEPCO Schematic Image -->
+                    <div class="w-full max-h-[440px] rounded-xl overflow-hidden border border-white/10 relative group bg-white/5 flex items-center justify-center p-2">
+                        <a href="https://www.tepco.co.jp/en/hd/decommission/progress/retrieval/images/img_index-e_02.png" target="_blank" class="source-tag absolute top-2 right-3 text-lg z-20 shadow-md bg-black/50 px-1 rounded">[9]</a>
+                        <img src="https://www.tepco.co.jp/en/hd/decommission/progress/retrieval/images/img_index-e_02.png" alt="Fukushima damaged reactor" class="w-full h-full object-contain"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Summary Comparison & Impact -->
+        <div class="slide px-8 pt-6 pb-12 bg-darkbg">
+            <div class="border-b border-white/10 pb-3 mb-4">
+                <h2 class="text-3xl font-mono font-bold text-white text-center">Summary Comparison & Impact</h2>
+            <p class="font-mono text-[11px] text-white uppercase font-bold tracking-wider mb-0.5">INES Level 7 Accidents</p>
+            <p class="font-sans text-[19px] font-bold text-white leading-tight">The only two in history</p>
+            </div>
+            <div class="flex-grow flex flex-col gap-5">
+                
+                <!-- Top Half: Two Columns -->
+                <div class="flex gap-6 flex-1 h-[320px]">
+                    <!-- Chernobyl Column -->
+                    <div class="w-1/2 bg-gradient-to-b from-red-950/30 to-black border border-red-500/30 rounded-2xl p-5 relative shadow-lg flex flex-col gap-4">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-700 to-red-400"></div>
+                        <h2 class="text-2xl font-mono font-bold text-red-400 mb-1 text-center uppercase tracking-widest">Chernobyl</h2>
+                        
+                        <!-- Vital Stats Matrix -->
+                        <div class="grid grid-cols-2 gap-3 mb-2">
+                            <div class="bg-black/40 p-3 rounded-lg border border-red-500/20">
+                                <div class="text-[10px] font-mono text-red-400/80 mb-1 uppercase tracking-wider font-bold">Reactor & Containment</div>
+                                <div class="text-white text-[13px] leading-snug">RBMK-1000 (Graphite) <br/>No protective vessel</div>
+                            </div>
+                            <div class="bg-black/40 p-3 rounded-lg border border-red-500/20">
+                                <div class="text-[10px] font-mono text-red-400/80 mb-1 uppercase tracking-wider font-bold">Fatal Flaw & Cause</div>
+                                <div class="text-white text-[13px] leading-snug">Positive void coeff.<br/>Operator safety bypass</div>
+                            </div>
+                        </div>
+
+                        <!-- Impact Metrics Grid -->
+                        <div class="grid grid-cols-3 gap-3 mt-auto">
+                            <div class="bg-black/60 border border-red-500/30 p-2 rounded-xl text-center flex flex-col justify-center h-[76px] relative">
+                                <a href="https://web.archive.org/web/20110804232629if_/http://www.unscear.org/docs/reports/2008/11-80076_Report_2008_Annex_D.pdf" target="_blank" class="source-tag absolute top-1 right-2 text-[10px] hover:text-white">[12]</a>
+                                <div class="font-mono text-[22px] font-bold text-white leading-none">335k</div>
+                                <div class="text-[9px] font-bold text-gray-400 uppercase tracking-wider mt-1.5">Evacuated</div>
+                            </div>
+                            <div class="bg-black/60 border border-red-500/30 p-2 rounded-xl text-center flex flex-col justify-center h-[76px]">
+                                <div class="font-mono text-[22px] font-bold text-white leading-none">30 km</div>
+                                <div class="text-[9px] font-bold text-gray-400 uppercase tracking-wider mt-1.5">Exclusion Zone</div>
+                            </div>
+                            <div class="bg-black/60 border border-red-500/30 p-2 rounded-xl text-center flex flex-col justify-center h-[76px] relative">
+                                <a href="https://web.archive.org/web/20110804232629if_/http://www.unscear.org/docs/reports/2008/11-80076_Report_2008_Annex_D.pdf" target="_blank" class="source-tag absolute top-1 right-2 text-[10px] hover:text-white">[12]</a>
+                                <div class="font-mono text-[22px] font-bold text-red-400 leading-none">~30</div>
+                                <div class="text-[9px] font-bold text-red-400 uppercase tracking-wider mt-1.5">Direct Deaths</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fukushima Column -->
+                    <div class="w-1/2 bg-gradient-to-b from-cyan-950/30 to-black border border-cyan-500/30 rounded-2xl p-5 relative shadow-lg flex flex-col gap-4">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-700 to-cyan-400"></div>
+                        <h2 class="text-2xl font-mono font-bold text-cyan-400 mb-1 text-center uppercase tracking-widest">Fukushima</h2>
+                        
+                        <!-- Vital Stats Matrix -->
+                        <div class="grid grid-cols-2 gap-3 mb-2">
+                            <div class="bg-black/40 p-3 rounded-lg border border-cyan-500/20">
+                                <div class="text-[10px] font-mono text-cyan-400/80 mb-1 uppercase tracking-wider font-bold">Reactor & Containment</div>
+                                <div class="text-white text-[13px] leading-snug">BWR Mark I (Light Water) <br/>Robust Primary Vessel</div>
+                            </div>
+                            <div class="bg-black/40 p-3 rounded-lg border border-cyan-500/20">
+                                <div class="text-[10px] font-mono text-cyan-400/80 mb-1 uppercase tracking-wider font-bold">Fatal Flaw & Cause</div>
+                                <div class="text-white text-[13px] leading-snug">Vulnerable Backup<br/>Low-lying Generators</div>
+                            </div>
+                        </div>
+
+                        <!-- Impact Metrics Grid -->
+                        <div class="grid grid-cols-3 gap-3 mt-auto">
+                            <div class="bg-black/60 border border-cyan-500/30 p-2 rounded-xl text-center flex flex-col justify-center h-[76px] relative">
+                                <a href="https://web.archive.org/web/20160515124508/http://www.reconstruction.go.jp/english/topics/GEJE/index.html" target="_blank" class="source-tag absolute top-1 right-2 text-[10px] hover:text-white">[13]</a>
+                                <div class="font-mono text-[22px] font-bold text-white leading-none">154k</div>
+                                <div class="text-[9px] font-bold text-gray-400 uppercase tracking-wider mt-1.5">Evacuated</div>
+                            </div>
+                            <div class="bg-black/60 border border-cyan-500/30 p-2 rounded-xl text-center flex flex-col justify-center h-[76px]">
+                                <div class="font-mono text-[22px] font-bold text-white leading-none">20 km</div>
+                                <div class="text-[9px] font-bold text-gray-400 uppercase tracking-wider mt-1.5">Exclusion Zone</div>
+                            </div>
+                            <div class="bg-black/60 border border-cyan-500/30 p-2 rounded-xl text-center flex flex-col justify-center h-[76px] relative">
+                                <div class="absolute top-1 right-1 flex gap-1">
+                                    <a href="https://www.bbc.com/news/world-asia-45423575" target="_blank" class="source-tag text-[10px] hover:text-white">[10]</a>
+                                    <a href="https://www.reconstruction.go.jp/files/user/topics/main-cat2/sub-cat2-6/20260213_kanrenshi.pdf" target="_blank" class="source-tag text-[10px] hover:text-white">[11]</a>
+                                </div>
+                                <div class="font-mono text-[18px] font-bold text-cyan-400 leading-none mt-2">1 / ~2.3k</div>
+                                <div class="text-[9px] font-bold text-cyan-400 uppercase tracking-wider mt-1">Direct / Evac Deaths</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Data Visualization: Radiation Bar Chart -->
+                <div class="glass-card p-5 mt-2 flex flex-col justify-center shrink-0">
+                    <h3 class="text-[13px] font-mono font-bold text-gray-300 uppercase tracking-widest flex items-center mb-4">
+                        <i class="material-icons text-lg text-gray-500 mr-2">bar_chart</i>
+                        Total Radiation Released <span class="text-[11px] text-gray-500 ml-2 font-medium">(Iodine-131 Equivalent)</span>
+                    </h3>
+                    
+                    <div class="space-y-4 px-2">
+                        <!-- Chernobyl Bar -->
+                        <div class="flex items-center">
+                            <div class="w-28 shrink-0 text-right pr-4 font-mono text-[13px] font-bold text-gray-400 uppercase tracking-wider">Chernobyl</div>
+                            <div class="flex-1 bg-white/5 rounded-lg h-[22px] flex items-center border border-white/10 overflow-hidden">
+                                <div class="bg-red-500 h-full rounded-r-lg shadow-[0_0_10px_rgba(239,68,68,0.5)]" style="width: 100%;"></div>
+                            </div>
+                            <div class="w-[280px] shrink-0 text-left pl-4 flex flex-col justify-center overflow-visible">
+                                <div class="font-mono text-[17px] font-bold text-red-400 leading-none">5,300 PBq</div>
+                                <div class="text-[12px] font-medium text-gray-500 mt-1 leading-none tracking-wide whitespace-nowrap">Spread across 1000+ km of Europe</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Fukushima Bar -->
+                        <div class="flex items-center">
+                            <div class="w-28 shrink-0 text-right pr-4 font-mono text-[13px] font-bold text-gray-400 uppercase tracking-wider">Fukushima</div>
+                            <div class="flex-1 bg-white/5 rounded-lg h-[22px] flex items-center border border-white/10 overflow-hidden">
+                                <!-- 520 is roughly 9.8% of 5300 -->
+                                <div class="bg-cyan-500 h-full rounded-r-lg shadow-[0_0_10px_rgba(6,182,212,0.5)]" style="width: 9.8%;"></div>
+                            </div>
+                            <div class="w-[280px] shrink-0 text-left pl-4 flex flex-col justify-center overflow-visible">
+                                <div class="font-mono text-[17px] font-bold text-cyan-400 leading-none">~520 PBq</div>
+                                <div class="text-[12px] font-medium text-gray-500 mt-1 leading-none tracking-wide whitespace-nowrap">~80% blown out over the Pacific</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Slide 9: Sources -->
+        <div class="slide px-8 pt-6 pb-12 bg-darkbg">
+            <div class="border-b border-white/10 pb-3 mb-6">
+                <h2 class="text-3xl font-mono font-bold text-white flex items-center gap-3">
+                    <i class="material-icons text-nuke text-3xl">menu_book</i> Sources & References
+                </h2>
+            </div>
+            <div class="flex-grow flex w-full h-full overflow-hidden">
+                <div class="grid grid-cols-2 gap-x-6 gap-y-2.5 w-full content-start pr-2">
+                    
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[1]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">Fission Diagram:</strong>
+                            <a href="https://en.wikipedia.org/wiki/Special:FilePath/Nuclear_fission_chain_reaction.svg" target="_blank" class="hover:text-nuke hover:underline">FilePath/Nuclear_fission...</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[2]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">Reactor Structure:</strong>
+                            <a href="https://en.wikipedia.org/wiki/Special:FilePath/Thermal_reactor_diagram.svg" target="_blank" class="hover:text-nuke hover:underline">FilePath/Thermal_reactor...</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[3]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">RBMK Schematic:</strong>
+                            <a href="https://en.wikipedia.org/wiki/Special:FilePath/RBMK_reactor_schematic.svg" target="_blank" class="hover:text-nuke hover:underline">FilePath/RBMK_reactor...</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[4]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">RBMK Info (WNA):</strong>
+                            <a href="https://world-nuclear.org/information-library/appendices/rbmk-reactors" target="_blank" class="hover:text-nuke hover:underline">world-nuclear.org/.../rbmk-reactors</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[5]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">Chernobyl Timeline:</strong>
+                            <a href="https://world-nuclear.org/information-library/appendices/chernobyl-accident-appendix-1-sequence-of-events" target="_blank" class="hover:text-nuke hover:underline">world-nuclear.org/.../sequence-of-events</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[6]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">Chernobyl Photo:</strong>
+                            <a href="https://en.wikipedia.org/wiki/Special:FilePath/IAEA_02790015_(5613115146).jpg" target="_blank" class="hover:text-nuke hover:underline">FilePath/IAEA_02790015...</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[7]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">Radiation Data:</strong>
+                            <a href="https://www.sciencedirect.com/science/article/abs/pii/S004896971301173X?via%3Dihub" target="_blank" class="hover:text-nuke hover:underline">sciencedirect.com/.../S004896971301173X</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[8]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">BWR Schematic:</strong>
+                            <a href="https://upload.wikimedia.org/wikipedia/commons/6/6a/Schema_reacteur_eau_bouillante.svg" target="_blank" class="hover:text-nuke hover:underline">commons/.../Schema_reacteur...</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[9]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">Fukushima Photo:</strong>
+                            <a href="https://www.tepco.co.jp/en/hd/decommission/progress/retrieval/images/img_index-e_02.png" target="_blank" class="hover:text-nuke hover:underline">tepco.co.jp/.../img_index-e_02.png</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[10]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">Fuku. 1 Death:</strong>
+                            <a href="https://www.bbc.com/news/world-asia-45423575" target="_blank" class="hover:text-nuke hover:underline">bbc.com/news/world-asia-45423575</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[11]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">Fuku. Evac Deaths:</strong>
+                            <a href="https://www.reconstruction.go.jp/files/user/topics/main-cat2/sub-cat2-6/20260213_kanrenshi.pdf" target="_blank" class="hover:text-nuke hover:underline">reconstruction.go.jp/.../20260213_kanrenshi.pdf</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[12]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">Chernobyl Victims:</strong>
+                            <a href="https://web.archive.org/web/20110804232629if_/http://www.unscear.org/docs/reports/2008/11-80076_Report_2008_Annex_D.pdf" target="_blank" class="hover:text-nuke hover:underline">unscear.org/.../11-80076_Report_2008...</a>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg p-2.5 hover:bg-white/10 transition-colors">
+                        <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[13]</span>
+                        <p class="text-gray-300 text-[13px] truncate flex-1">
+                            <strong class="text-white font-mono mr-1">Fuku. Evacuation:</strong>
+                            <a href="https://web.archive.org/web/20160515124508/http://www.reconstruction.go.jp/english/topics/GEJE/index.html" target="_blank" class="hover:text-nuke hover:underline">reconstruction.go.jp/english/.../GEJE/index.html</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Global Navigation Controls (No prev/next buttons, only slide counter) & Progress Bar -->
+        <div id="controls" class="absolute bottom-4 left-0 w-full flex justify-center items-center px-8 z-50 pointer-events-none">
+            <div id="slide-counter" class="text-gray-400 font-mono tracking-widest text-sm bg-black/50 px-4 py-1.5 rounded-full backdrop-blur-md border border-white/10"></div>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-white/10 z-50">
+            <div id="progress-bar" class="h-full bg-nuke transition-all duration-500 ease-out" style="width: 0%;"></div>
+        </div>
+
+    </div>
+
+    <!-- Interactivity Script -->
+    <script>
+        // Scaling to fit screen size while maintaining 16:9 aspect ratio
+        function resizePresentation() {
+            const container = document.getElementById('presentation-wrapper');
+            const scaleX = window.innerWidth / 1280;
+            const scaleY = window.innerHeight / 720;
+            const scale = Math.min(scaleX, scaleY) * 0.98;
+            container.style.transform = `scale(${scale})`;
+        }
+
+        window.addEventListener('resize', resizePresentation);
+        resizePresentation();
+
+        // Slide navigation logic
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const counter = document.getElementById('slide-counter');
+        const progressBar = document.getElementById('progress-bar');
+
+        function showSlide(index) {
+            // Logic for looping
+            if (index >= slides.length) currentSlideIndex = 0;
+            else if (index < 0) currentSlideIndex = slides.length - 1;
+            else currentSlideIndex = index;
+
+            slides.forEach((slide, i) => {
+                if(i === currentSlideIndex) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+            
+            // Update HUD
+            counter.innerText = `${currentSlideIndex + 1} / ${slides.length}`;
+            progressBar.style.width = `${((currentSlideIndex + 1) / slides.length) * 100}%`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlideIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlideIndex - 1);
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+                e.preventDefault(); // Prevent scroll on spacebar
+            }
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Init
+        showSlide(currentSlideIndex);
+    </script>
+</body>
+</html>
