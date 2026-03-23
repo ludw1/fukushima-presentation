@@ -548,7 +548,7 @@
                         <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[1]</span>
                         <p class="text-gray-300 text-[13px] truncate flex-1">
                             <strong class="text-white font-mono mr-1">Fission Diagram:</strong>
-                            <a href="https://en.wikipedia.org/wiki/Special:FilePath/Nuclear_fission_chain_reaction.svg" target="_blank" class="hover:text-nuke hover:underline">FilePath/Nuclear_fission...</a>
+                            <a href="https://de.wikiversity.org/wiki/Datei:Nuclear_fission_chain_reaction.svg" target="_blank" class="hover:text-nuke hover:underline">FilePath/Nuclear_fission...</a>
                         </p>
                     </div>
 
@@ -556,7 +556,7 @@
                         <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[2]</span>
                         <p class="text-gray-300 text-[13px] truncate flex-1">
                             <strong class="text-white font-mono mr-1">Reactor Structure:</strong>
-                            <a href="https://en.wikipedia.org/wiki/Special:FilePath/Thermal_reactor_diagram.svg" target="_blank" class="hover:text-nuke hover:underline">FilePath/Thermal_reactor...</a>
+                            <a href="https://commons.wikimedia.org/wiki/File:Thermal_reactor_diagram.svg" target="_blank" class="hover:text-nuke hover:underline">FilePath/Thermal_reactor...</a>
                         </p>
                     </div>
 
@@ -564,7 +564,7 @@
                         <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[3]</span>
                         <p class="text-gray-300 text-[13px] truncate flex-1">
                             <strong class="text-white font-mono mr-1">RBMK Schematic:</strong>
-                            <a href="https://en.wikipedia.org/wiki/Special:FilePath/RBMK_reactor_schematic.svg" target="_blank" class="hover:text-nuke hover:underline">FilePath/RBMK_reactor...</a>
+                            <a href="http://commons.wikimedia.org/wiki/File:RBMK_reactor_schematic_de.svg" target="_blank" class="hover:text-nuke hover:underline">FilePath/RBMK_reactor...</a>
                         </p>
                     </div>
 
@@ -588,7 +588,7 @@
                         <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[6]</span>
                         <p class="text-gray-300 text-[13px] truncate flex-1">
                             <strong class="text-white font-mono mr-1">Chernobyl Photo:</strong>
-                            <a href="https://en.wikipedia.org/wiki/Special:FilePath/IAEA_02790015_(5613115146).jpg" target="_blank" class="hover:text-nuke hover:underline">FilePath/IAEA_02790015...</a>
+                            <a href="https://commons.wikimedia.org/wiki/File:IAEA_02790015_(5613115146).jpg" target="_blank" class="hover:text-nuke hover:underline">FilePath/IAEA_02790015...</a>
                         </p>
                     </div>
 
@@ -604,7 +604,7 @@
                         <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[8]</span>
                         <p class="text-gray-300 text-[13px] truncate flex-1">
                             <strong class="text-white font-mono mr-1">BWR Schematic:</strong>
-                            <a href="https://upload.wikimedia.org/wikipedia/commons/6/6a/Schema_reacteur_eau_bouillante.svg" target="_blank" class="hover:text-nuke hover:underline">commons/.../Schema_reacteur...</a>
+                            <a href="https://de.wikipedia.org/wiki/Datei:Schema_reacteur_eau_bouillante.svg" target="_blank" class="hover:text-nuke hover:underline">commons/.../Schema_reacteur...</a>
                         </p>
                     </div>
 
@@ -612,7 +612,7 @@
                         <span class="source-tag text-base bg-black/50 px-2 py-0.5 rounded shrink-0">[9]</span>
                         <p class="text-gray-300 text-[13px] truncate flex-1">
                             <strong class="text-white font-mono mr-1">Fukushima Photo:</strong>
-                            <a href="https://www.tepco.co.jp/en/hd/decommission/progress/retrieval/images/img_index-e_02.png" target="_blank" class="hover:text-nuke hover:underline">tepco.co.jp/.../img_index-e_02.png</a>
+                            <a href="https://www.tepco.co.jp/en/hd/decommission/progress/retrieval/index-e.html" target="_blank" class="hover:text-nuke hover:underline">tepco.co.jp/.../img_index-e_02.png</a>
                         </p>
                     </div>
 
@@ -652,9 +652,15 @@
             </div>
         </div>
 
-        <!-- Global Navigation Controls (No prev/next buttons, only slide counter) & Progress Bar -->
-        <div id="controls" class="absolute bottom-4 left-0 w-full flex justify-center items-center px-8 z-50 pointer-events-none">
+        <!-- Global Navigation Controls & Progress Bar -->
+        <div id="controls" class="absolute bottom-4 left-0 w-full flex justify-center items-center gap-4 px-8 z-50 pointer-events-none">
+            <button onclick="prevSlide()" class="pointer-events-auto flex items-center gap-1 text-gray-400 font-mono text-sm bg-black/50 px-4 py-1.5 rounded-full backdrop-blur-md border border-white/10 hover:text-white hover:border-white/30 transition-colors">
+                <i class="material-icons text-base">chevron_left</i> Prev
+            </button>
             <div id="slide-counter" class="text-gray-400 font-mono tracking-widest text-sm bg-black/50 px-4 py-1.5 rounded-full backdrop-blur-md border border-white/10"></div>
+            <button onclick="nextSlide()" class="pointer-events-auto flex items-center gap-1 text-gray-400 font-mono text-sm bg-black/50 px-4 py-1.5 rounded-full backdrop-blur-md border border-white/10 hover:text-white hover:border-white/30 transition-colors">
+                Next <i class="material-icons text-base">chevron_right</i>
+            </button>
         </div>
         
         <!-- Progress Bar -->
